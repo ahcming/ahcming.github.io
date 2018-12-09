@@ -20,6 +20,7 @@ blog         : true
 找到进程ID, 比如3233, 再找到进程内负载比较高的线程ID
 
 > top -Hp 3233
+
 <img src="/assets/images/linux/linux-top-Hp.png" width="650" height="400" alt="top" />
 
 可以看出CPU占用高的线程ID, 此处是20981, 20974, 20975, 20976, 20977, 20978, 20979, 20980
@@ -55,7 +56,7 @@ jstack命令就能把java进程内部的线程信息以调用栈的形式dump出
 
 假设3233内的有问题线程是30417 
 
-<img src="/assets/images/linux/python-print.png" width="650" height="400" alt="top" />
+<img src="/assets/images/linux/python-print.png" width="650" height="100" alt="python print" />
 
 然后我们用 76d1在3233.log文件里搜索一下, 幸运的话能看到具体的类和方法名了
 
@@ -88,7 +89,7 @@ The -F option can be used when the target process is not responding
 
 ### jstat
 
-当然我就没那么幸运了, 我的线程ID在jstack文件里找到的是GC进程的ID, 那怎么查看当前进程的gc情况呢
+当然我就没那么幸运了, 我的线程ID在jstack文件里找到的是GC进程的ID, 也就是说由于GC进程一直在执行导致CPU占用高, 那怎么查看当前进程的gc情况呢
 
 #### -gc
 
@@ -96,7 +97,7 @@ The -F option can be used when the target process is not responding
 jstat -gc {pid} {interval}
 ```
 
-<img src="/assets/images/linux/java-jstat-gc.png" width="650" height="400" alt="top" />
+<img src="/assets/images/linux/java-jstat-gc.png" width="1200" height="250" alt="java jstac-gc" />
 
 各列含义说明:
 - S0C: Survivor0区的容量 #C是Capacity, 容量的意思, 单位:字节, 下同
@@ -125,7 +126,7 @@ jstat -gc {pid} {interval}
 jstat -gcutil {pid} {interval}
 ```
 
-<img src="/assets/images/linux/java-jstat-gcutil.png" width="650" height="400" alt="top" />
+<img src="/assets/images/linux/java-jstat-gcutil.png" width="700" height="160" alt="top" />
 
 -gc显示的每个区的大小, -gcutil可以看到每个区的使用比例, 可以从另外一个维度来看每个区的使用情况
 
@@ -148,7 +149,7 @@ jstat -gcutil {pid} {interval}
 jstat -gccause {pid} {interval}
 ```
 
-<img src="/assets/images/linux/java-jstat-gccause.png" width="650" height="400" alt="top" />
+<img src="/assets/images/linux/java-jstat-gccause.png" width="930" height="200" alt="top" />
 
 gccause可以查看最近2次gc发生的原因
 
@@ -197,7 +198,7 @@ jmap -dump:format=b,file=filname {pid}
 你以为这就完了吗? no, 每个按钮点一下又要等半小时; 
 实在受不了, 求教同行, 得知有个神器叫jprofiler, 赶紧下载之, 贼慢; 但好歹是唯一的希望, 只要让我看到dump里的对象是啥, 我就能定位这个内存泄漏的原因
 
-好不容易等到jprofiler下载完成, 又过了半小时终于打开了dump文件, 现在的问题是从打开的面板里分析出哪些对象是异常的
+好不容易等到jprofiler下载完成, 又过了半小时终于打开了dump文件, 现在的问题只剩下怎么从打开的面板里分析出哪些对象是异常的
 
 你以为打开之后, 就一目了然了看出哪里内存泄漏了吗? too young ~~ 
 
@@ -207,7 +208,8 @@ jmap -dump:format=b,file=filname {pid}
 - char[], String很多, 就比较麻烦了, 因为这个基础类型, 数量多也可能是正常的情况, 就只能仔细分析了
 
 最后, 即便我们有这么多工具, 还是未必能找到BUG, 现实就是这么令人沮丧 
-唯有努力学习, 夯实基本功, 才能在下一次与BUG的交手中, 一击必杀
+
+唯有努力学习, 夯实基本功, 才能在下一次与BUG的交手中, 一击必杀, God Luck!
 
 ### 参考:
 - [jvm源码阅读笔记7](https://blog.csdn.net/foolishandstupid/article/details/78078238)
