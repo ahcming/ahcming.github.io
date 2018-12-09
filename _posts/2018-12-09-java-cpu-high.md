@@ -48,7 +48,7 @@ jstack命令就能把java进程内部的线程信息以调用栈的形式dump出
 
 > jstack 3233 > /tmp/3233.log
 
-<img src="/assets/images/linux/java-stack.png" width="650" height="400" alt="top" />
+<img src="/assets/images/linux/java-stack.png" width="650" height="400" alt="jstack" />
 
 从中我们可以看出此时java进程里的所有线程, 每个线程的状态, 线程ID(截图里的nid)
 
@@ -97,7 +97,7 @@ The -F option can be used when the target process is not responding
 jstat -gc {pid} {interval}
 ```
 
-<img src="/assets/images/linux/java-jstat-gc.png" width="1200" height="250" alt="java jstac-gc" />
+<img src="/assets/images/linux/java-jstat-gc.png" width="1200" height="250" alt="jstat-gc" />
 
 各列含义说明:
 - S0C: Survivor0区的容量 #C是Capacity, 容量的意思, 单位:字节, 下同
@@ -126,7 +126,7 @@ jstat -gc {pid} {interval}
 jstat -gcutil {pid} {interval}
 ```
 
-<img src="/assets/images/linux/java-jstat-gcutil.png" width="700" height="160" alt="top" />
+<img src="/assets/images/linux/java-jstat-gcutil.png" width="700" height="160" alt="jstat-gcutil" />
 
 -gc显示的每个区的大小, -gcutil可以看到每个区的使用比例, 可以从另外一个维度来看每个区的使用情况
 
@@ -149,7 +149,7 @@ jstat -gcutil {pid} {interval}
 jstat -gccause {pid} {interval}
 ```
 
-<img src="/assets/images/linux/java-jstat-gccause.png" width="930" height="200" alt="top" />
+<img src="/assets/images/linux/java-jstat-gccause.png" width="930" height="200" alt="jstat-gccause" />
 
 gccause可以查看最近2次gc发生的原因
 
