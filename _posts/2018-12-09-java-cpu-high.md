@@ -79,14 +79,21 @@ The -F option can be used when the target process is not responding
 也能导出数据, 但是导出的线程信息里是没打印nid信息的, 这样还是不方便我们定位问题
 
 解决方法有2个:
-+ 切tomcat用户执行
++ 使用进程用户来执行jstack; 
+  
+  而一般像nginx, tomcat这样的用户都是没有分配登录权限的, 也就是没有分配shell, 我们还需要去修改/etc/passwd里的配置;
+
+  并且切换帐户也需要权限, 所以最好还是以下面的方式 
+
 + 使用超级管理员权限
 
 > su - tomcat -c "jstack {tomcat_pid} > /tmp/{tomcat_pid}.log"
 
-而一般像nginx, tomcat这样的用户都是没有分配登录权限的, 也就是没有分配shell, 我们还需要去修改/etc/passwd里的配置; 
+或
 
-每一步都不舒坦啊, 搞程序的就是这样的, 遇到困难不要慌, 不要退缩, 要告诉自己, 这是学习的好机会
+> sudo -u tomcat jstack {tomcat_pid} > /tmp/{tomcat_pid}.log
+
+每一步都不舒坦啊, 搞程序的就是这样的, 遇到困难不要慌, 这是学习的好机会
 
 `纸上得来终觉浅, 绝知此事需躬行`
 
