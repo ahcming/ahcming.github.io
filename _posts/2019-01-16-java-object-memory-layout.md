@@ -338,3 +338,5 @@ public class MemoryLayout {
 - [Java直接内存对齐(Memory Alignment)](https://www.jdon.com/48256)
 - [轻松搞定内存对齐](https://blog.csdn.net/qq_31821675/article/details/72853551)
 - [可能是把Java内存区域讲的最清楚的一篇文章](https://cloud.tencent.com/developer/article/1193412)
+- [Java对象内存布局](https://www.jianshu.com/p/91e398d5d17c)
+
