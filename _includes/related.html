@@ -5,7 +5,7 @@
 
         {% if postHasSimilar == false and hasSimilar.size < 5 and post != page and post.tags == page.tags %}
             {% if hasSimilar.size == 0 %}
-            <h4>Related Posts: </h4>
+            <h4>相关文章: </h4>
             <ul>
             {% endif %}
             <li class="relatedPost">{{ post.date | date: "%Y-%m-%d" }}  
