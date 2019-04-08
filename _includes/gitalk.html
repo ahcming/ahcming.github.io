@@ -4,11 +4,11 @@
 <div id="gitalk-container"></div>     
 <script type="text/javascript">
     var gitalk = new Gitalk({
-        clientID: '374025502c4413b98ccb',
-        clientSecret: 'e44d7371dc3f514fade0f8b3e678988ba7d6121a',
-        repo: 'ahcming.github.io',
-        owner: 'ahcming',
-        admin: ['ahcming'],
+        clientID: '{{ site.oauth.client_id }}',
+        clientSecret: '{{ site.oauth.client_secret }}',
+        repo: '{{ site.authors.ahcming.repo }}',
+        owner: '{{ site.authors.ahcming.name }}',
+        admin: ['{{ site.authors.ahcming.name }}'],
         id: decodeURI(window.location.pathname),
     });
     gitalk.render('gitalk-container');

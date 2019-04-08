@@ -36,10 +36,13 @@ layout: page
     </div>
 {% endif %}
 
-{% include gitalk.html %}
-
 {% if site.related %}
     {% include related.html %}
+{% endif %}
+
+<!-- 只有工作类且是原创的才打开评论功能 -->
+{% if page.tag[0] == "work" and page.tag[1] == "original" %}
+    {% include gitalk.html %}
 {% endif %}
 
 {% if site.show-author %}

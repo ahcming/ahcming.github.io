@@ -10,7 +10,7 @@ description:
 external-image: false
 picture: assets/images/me.jpg
 
-url: http://ahcming.github.io
+url: https://ahcming.github.io
 
 #permalink: /:title/
 permalink: /:year/:month/:day/:title
@@ -45,12 +45,17 @@ medium: ahcming
 #vimeo: myvimeo
 email: ahcming@163.com
 
+oauth:
+  client_id: 374025502c4413b98ccb
+  client_secret: e44d7371dc3f514fade0f8b3e678988ba7d6121a
+
 authors:
   ahcming:
     name: ahcming
     bio: 江湖未静,不得让位
     picture: assets/images/me.jpg
     QQ: ahcming
+    repo: ahcming.github.io
 
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
