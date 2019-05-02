@@ -284,7 +284,12 @@ initpost_tags() {
 
         tag_choice ${args[@]}
         pTag=${FUNC_RET}
-        TAGS="${TAGS} \"${pTag//_/ }\""
+
+        if [ "${TAGS}" == "" ];then
+            TAGS="\"${pTag//_/ }\""
+        else
+            TAGS="${TAGS}, \"${pTag//_/ }\""
+        fi
         
         find_by_name ${FUNC_RET}
         if [ "${FUNC_RET##*:}" == "Y" ]; then
